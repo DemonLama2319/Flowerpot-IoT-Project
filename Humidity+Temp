@@ -1,0 +1,11 @@
+        temperature, humidity = read_TempHum()
+        
+        i=1
+        data_out = {"Packet":i, "temperature":temperature, "humidty":humidity}
+        print("data_out=",data_out)
+        JSON_data_out = json.dumps(data_out) # Convert to JSON format
+        # Publish data to MQTT server
+        client.publish(TelemetryTopic, JSON_data_out, 0)
+        time.sleep(2)
+        print('---------------------------')
+        i=i+1
